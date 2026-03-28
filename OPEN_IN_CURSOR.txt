@@ -1,0 +1,6 @@
+WorldPulse lives in this folder (backend/ and frontend/).
+
+Open this path in Cursor:
+  /Volumes/APPLICTIONS/3D_project
+
+The Desktop copy was removed; use this folder only.

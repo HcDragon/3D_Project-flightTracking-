@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 222 47% 5%;
+  --foreground: 45 100% 97%;
+  --card: 222 42% 10%;
+  --card-foreground: 45 40% 96%;
+  --muted: 220 28% 16%;
+  --muted-foreground: 215 18% 62%;
+  /* Sky + sun accent */
+  --accent: 38 96% 56%;
+  --accent-foreground: 222 47% 8%;
+  --primary: 199 85% 52%;
+  --primary-foreground: 222 47% 6%;
+  --sun: 38 100% 62%;
+  --sun-glow: 28 100% 55%;
+  --dusk: 330 65% 58%;
+  --border: 220 35% 22%;
+  --radius: 1rem;
+}
+
+body {
+  @apply bg-background text-foreground antialiased;
+  background-color: hsl(222 47% 5%);
+  background-image:
+    radial-gradient(
+      ellipse 100% 70% at 85% -15%,
+      hsl(28 95% 55% / 0.35),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 80% 50% at 12% 8%,
+      hsl(199 90% 45% / 0.2),
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse 90% 60% at 50% 110%,
+      hsl(270 50% 35% / 0.25),
+      transparent 45%
+    ),
+    linear-gradient(
+      165deg,
+      hsl(222 48% 8%) 0%,
+      hsl(225 42% 6%) 45%,
+      hsl(215 38% 7%) 100%
+    );
+  min-height: 100vh;
+}
+
+/* Subtle horizon shift (very slow) */
+@keyframes horizon-shift {
+  0%,
+  100% {
+    opacity: 1;
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    opacity: 0.92;
+    filter: hue-rotate(12deg);
+  }
+}
+
+.wp-ambient {
+  animation: horizon-shift 18s ease-in-out infinite;
+}
+
+.glass-panel {
+  @apply rounded-2xl border backdrop-blur-xl;
+  border-color: hsl(var(--border) / 0.85);
+  background: linear-gradient(
+    145deg,
+    hsl(222 40% 12% / 0.72) 0%,
+    hsl(220 35% 8% / 0.55) 50%,
+    hsl(215 38% 10% / 0.65) 100%
+  );
+  box-shadow:
+    0 0 0 1px hsl(38 80% 55% / 0.12),
+    0 12px 40px hsl(220 60% 4% / 0.55),
+    0 0 80px hsl(28 90% 50% / 0.06);
+}
+
+.glass-panel--sunlit {
+  border-color: hsl(38 70% 50% / 0.35);
+  box-shadow:
+    0 0 0 1px hsl(38 90% 58% / 0.2),
+    0 12px 40px hsl(220 60% 4% / 0.5),
+    0 0 100px hsl(38 100% 50% / 0.12);
+}
+
+/* Decorative sun disk (UI chrome only) */
+.wp-sun-orb {
+  pointer-events: none;
+  position: absolute;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle at 35% 35%,
+    hsl(48 100% 88%) 0%,
+    hsl(38 100% 58%) 28%,
+    hsl(28 95% 48%) 52%,
+    hsl(20 90% 38% / 0.35) 72%,
+    transparent 78%
+  );
+  box-shadow:
+    0 0 60px hsl(38 100% 55% / 0.45),
+    0 0 120px hsl(28 100% 50% / 0.2);
+}
+
+.wp-metric-tile {
+  @apply rounded-xl px-3 py-2;
+  border: 1px solid hsl(220 40% 24% / 0.9);
+  background: linear-gradient(
+    160deg,
+    hsl(220 35% 14% / 0.85) 0%,
+    hsl(215 32% 11% / 0.7) 100%
+  );
+  box-shadow: inset 0 1px 0 hsl(38 70% 60% / 0.08);
+}
+
+.wp-title-gradient {
+  background: linear-gradient(
+    105deg,
+    hsl(45 100% 96%) 0%,
+    hsl(38 95% 72%) 35%,
+    hsl(199 90% 72%) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
